@@ -23,10 +23,12 @@ beforeEach(async () => {
   const { page } = await import("$app/state");
   const { authStore } = await import("./features/auth/states/authStore");
   const { usersStore } = await import("./features/users/states/usersStore");
+  const { coursesStore } = await import("./features/courses/states/coursesStore");
 
   localStorage.clear();
   authStore.reset();
   usersStore.reset();
+  coursesStore.reset();
   vi.mocked(goto).mockReset();
   (page as any).url = new URL("http://localhost/");
   (page as any).params = {};

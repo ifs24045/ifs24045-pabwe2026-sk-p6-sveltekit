@@ -3,6 +3,7 @@ import { tick } from "svelte";
 import { page } from "$app/state";
 import { authStore } from "./features/auth/states/authStore";
 import { usersStore } from "./features/users/states/usersStore";
+import { coursesStore } from "./features/courses/states/coursesStore";
 
 function createWrapper(element: Element | null) {
   const el = element as HTMLElement;
@@ -31,7 +32,7 @@ function createWrapper(element: Element | null) {
 }
 
 function preloadStores(preloadedState: Record<string, any>) {
-  [authStore, usersStore].forEach((store: any) => {
+  [authStore, usersStore, coursesStore].forEach((store: any) => {
     const ownState = Object.fromEntries(
       Object.entries(preloadedState).filter(([key]) => key in store.$state)
     );
@@ -63,9 +64,10 @@ export function renderWithProviders(
 
   const { container } = render(Component, { props });
 
-  return {
+    return {
     wrapper: createWrapper(container),
     authStore,
     usersStore,
+    coursesStore,
   };
 }
