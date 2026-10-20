@@ -1,5 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import adapter from "@sveltejs/adapter-bun";
+import adapterBun from "@sveltejs/adapter-bun";
+import adapterVercel from "@sveltejs/adapter-vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { svelteTesting } from "@testing-library/svelte/vite";
 import { defineConfig, loadEnv } from "vite";
@@ -9,15 +10,19 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const port = Number(process.env.APP_PORT || env.APP_PORT) || 3005;
 
+  const adapter = process.env.VERCEL
+    ? adapterVercel()
+    : adapterBun({
+        envPrefix: "APP_",
+        serverOptions: {
+          port: port,
+        },
+      });
+
   return {
     plugins: [
       sveltekit({
-        adapter: adapter({
-          envPrefix: "APP_",
-          serverOptions: {
-            port: port,
-          },
-        }),
+        adapter,
       }),
       tailwindcss(),
       svelteTesting(),
