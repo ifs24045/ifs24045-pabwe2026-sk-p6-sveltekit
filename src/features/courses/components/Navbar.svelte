@@ -39,7 +39,7 @@
     {#if profile}
       <a href="/profile" data-testid="navbar-profile" class="flex items-center gap-2.5">
         {#if profile.photo}
-          <img src={profile.photo} alt="" class="w-9 h-9 rounded-full object-cover border border-slate-200" />
+                    <img src={profile.photo} alt="" width="36" height="36" class="w-9 h-9 rounded-full object-cover border border-slate-200" />
         {:else}
           <span class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center" aria-hidden="true">
             {profile.name.charAt(0).toUpperCase()}
