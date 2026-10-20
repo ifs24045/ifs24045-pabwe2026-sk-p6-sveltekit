@@ -77,6 +77,8 @@
                 <img
                   src={user.photo}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   class="w-12 h-12 rounded-full object-cover border border-slate-200 shrink-0"
                 />
               {:else}

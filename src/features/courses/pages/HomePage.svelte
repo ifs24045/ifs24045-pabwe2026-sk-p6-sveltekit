@@ -189,6 +189,8 @@
                 <img
                   src={String(course.cover)}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   data-testid={`course-cover-${course.id}`}
                   class="w-full h-32 object-cover"
                 />

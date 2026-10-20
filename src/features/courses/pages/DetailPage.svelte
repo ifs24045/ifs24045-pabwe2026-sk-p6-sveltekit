@@ -184,6 +184,8 @@
         <img
           src={String(course.cover)}
           alt=""
+          decoding="async"
+          fetchpriority="high"
           data-testid="detail-cover"
           class="w-full h-48 sm:h-64 object-cover"
         />
