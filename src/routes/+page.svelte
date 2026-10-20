@@ -1,1 +1,5 @@
-<h1>Delcom Courses</h1>
+<script lang="ts">
+  import HomePage from "../features/courses/pages/HomePage.svelte";
+</script>
+
+<HomePage />

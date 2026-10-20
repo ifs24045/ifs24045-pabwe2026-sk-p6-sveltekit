@@ -22,6 +22,10 @@ export function isFinished(status: unknown): boolean {
   return Number(status) === 1;
 }
 
+export function hasCover(cover?: string | null): boolean {
+  return Boolean(cover) && !String(cover).endsWith("/");
+}
+
 export function getYoutubeEmbedUrl(url?: string | null): string | null {
   const match = (url || "").match(
     /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/
