@@ -39,23 +39,24 @@
     {#if profile}
       <a href="/profile" data-testid="navbar-profile" class="flex items-center gap-2.5">
         {#if profile.photo}
-          <img src={profile.photo} alt={profile.name} class="w-9 h-9 rounded-full object-cover border border-slate-200" />
+          <img src={profile.photo} alt="" class="w-9 h-9 rounded-full object-cover border border-slate-200" />
         {:else}
-          <span class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center">
+          <span class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center" aria-hidden="true">
             {profile.name.charAt(0).toUpperCase()}
           </span>
         {/if}
-        <span class="hidden sm:block text-sm font-semibold text-slate-700">{profile.name}</span>
+        <span class="sr-only sm:not-sr-only text-sm font-semibold text-slate-700">{profile.name}</span>
       </a>
     {/if}
     <button
       type="button"
       data-testid="navbar-logout"
+      aria-label="Keluar"
       class="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl"
       onclick={onLogout}
     >
       <LogOut size={16} />
-      <span class="hidden sm:inline">Keluar</span>
+      <span class="hidden sm:inline" aria-hidden="true">Keluar</span>
     </button>
   </div>
 </header>
